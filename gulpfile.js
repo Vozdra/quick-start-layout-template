@@ -46,12 +46,12 @@ function js() {
 
 function bsServer() {
   browserSync({
-			server: {
-				baseDir: 'dist'
-			},
-			notify: false,
-			// tunnel: true,
-			// tunnel: "projectmane", //Demonstration page: http://projectmane.localtunnel.me
+    server: {
+      baseDir: 'dist'
+    },
+    notify: false,
+    // tunnel: true,
+    // tunnel: "projectmane", //Demonstration page: http://projectmane.localtunnel.me
   }); 
 }
 
