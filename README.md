@@ -1,5 +1,5 @@
 How to use?
   - download this
-  - npm init
+  - npm i
   - gulp build
   - gulp
