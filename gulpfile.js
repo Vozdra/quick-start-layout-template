@@ -23,31 +23,31 @@ function fonts() {
 function css() {
   return src('src/sass/main.sass')
     .pipe(sass())
-    .pipe(rename({suffix: '.min', prefix : ''}))
+    .pipe(rename({basename: "style", suffix: '.min'}))
     .pipe(autoprefixer({
       browsers: ['last 15 versions'],
       cascade: false
     }))
     .pipe(minifyCSS())
-    .pipe(dest('dist/css'))
+    .pipe(dest('src/css'))
     .pipe(browserSync.stream())
 }
 
 function js() {
   return src([
     'src/libs/jquery/dist/jquery.min.js',
-    'src/js/*.js'
+    'src/js/common.js'
   ])
-    .pipe(concat('scripts.min.js'))
+    .pipe(concat('script.min.js'))
     .pipe(uglify())
-    .pipe(dest('dist/js'))
+    .pipe(dest('src/js'))
     .pipe(browserSync.reload({ stream: true }))
 }
 
 function bsServer() {
   browserSync({
     server: {
-      baseDir: 'dist'
+      baseDir: 'src'
     },
     notify: false,
     // tunnel: true,
@@ -63,17 +63,27 @@ function imgMin() {
 
 function watching() {
 	watch('src/sass/*.sass', css);
-	watch(['src/js/*.js'], js);
-	watch('src/*.html', html);
+	watch(['src/js/common.js'], js);
+	watch('src/*.html', browserSync.reload());
 }
 
-async function removeDist() {
+async function remove() {
   return await del.sync('dist');
+}
+
+function moveCss() {
+  return src('src/css/*.css')
+  .pipe(dest('dist/css'))
+}
+
+function moveJs() {
+  return src('src/js/script.min.js')
+  .pipe(dest('dist/js'))
 }
 
 exports.js = js;
 exports.css = css;
 exports.html = html;
-exports.removeDist = removeDist;
-exports.build = series(removeDist, html, fonts, css, js, imgMin);
-exports.default = parallel(bsServer, watching);
+exports.remove = remove;
+exports.build = series(remove, html, css, js, fonts, imgMin, moveCss, moveJs);
+exports.default = parallel(bsServer, css, js, watching);
