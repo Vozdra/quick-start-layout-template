@@ -12,7 +12,6 @@ const del = require('del');
 function html() {
   return src('src/*.html')
     .pipe(browserSync.reload({ stream: true }))
-    .pipe(dest('dist/'))
 }
 
 function fonts() {
@@ -64,7 +63,7 @@ function imgMin() {
 function watching() {
 	watch('src/sass/*.sass', css);
 	watch(['src/js/common.js'], js);
-	watch('src/*.html', browserSync.reload());
+	watch('src/*.html', html);
 }
 
 async function remove() {
@@ -81,9 +80,14 @@ function moveJs() {
   .pipe(dest('dist/js'))
 }
 
+function moveHtml() {
+  return src('src/*.html')
+    .pipe(dest('dist/'))
+}
+
 exports.js = js;
 exports.css = css;
 exports.html = html;
 exports.remove = remove;
-exports.build = series(remove, html, css, js, fonts, imgMin, moveCss, moveJs);
+exports.build = series(remove, moveHtml, css, js, fonts, imgMin, moveCss, moveJs);
 exports.default = parallel(bsServer, css, js, watching);
