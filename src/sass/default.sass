@@ -1,0 +1,50 @@
+::placeholder
+	color: #000
+
+::selection
+	background-color: $bg-color
+  color: red
+
+body
+  position: relative
+  min-width: 320px
+  background-color: $bg-color
+  color: $text
+  font-family: $default-font
+  font-size: $base-size
+  overflow-x: hidden
+
+ul
+  padding: 0
+  margin: 0
+  list-style: none
+
+a
+  color: $gray
+  transition: all .25s ease
+  &:hover
+    color: lighten($gray, 15%)
+    transition: all .25s ease
+  &:focus, &:active, &:visited
+    border: none
+    outline: none
+
+i
+  font-family: 'Font Awesome 5 Free'
+
+img
+  display: block
+  max-width: 100%
+  height: auto
+
+.butt
+  border: 1px solid $butt-bd
+  padding: 10px 25px
+  background-color: transparent
+  border-radius: 0
+  text-transform: uppercase
+  text-align: center
+  font-family: "JosefinSans-Bold", sans-serif
+  &:focus
+    box-shadow: none
+    border-color: $accent-gr
