@@ -20,10 +20,10 @@ ul
   list-style: none
 
 a
-  color: $gray
+  color: $a-color
   transition: all .25s ease
   &:hover
-    color: lighten($gray, 15%)
+    color: lighten($a-color, 15%)
     transition: all .25s ease
   &:focus, &:active, &:visited
     border: none
@@ -38,7 +38,7 @@ img
   height: auto
 
 .butt
-  border: 1px solid $butt-bd
+  border: 1px solid $color-butt-bd
   padding: 10px 25px
   background-color: transparent
   border-radius: 0
@@ -47,4 +47,4 @@ img
   font-family: "JosefinSans-Bold", sans-serif
   &:focus
     box-shadow: none
-    border-color: $accent-gr
+    border-color: gray
