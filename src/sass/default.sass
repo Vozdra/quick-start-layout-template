@@ -1,8 +1,8 @@
 ::placeholder
-	color: #000
+  color: #000
 
 ::selection
-	background-color: $bg-color
+  background-color: $bg-color
   color: red
 
 body
@@ -12,7 +12,20 @@ body
   color: $text
   font-family: $default-font
   font-size: $base-size
+  line-height: 1.5
   overflow-x: hidden
+
+h1, h2, h3, h4
+  font-weight: bold
+
+h1
+  font-size: 60px
+h2
+  font-size: 50px
+h3 
+  font-size: 22px
+h4
+  font-size: 20px
 
 ul
   padding: 0
@@ -37,14 +50,38 @@ img
   max-width: 100%
   height: auto
 
-.butt
-  border: 1px solid $color-butt-bd
-  padding: 10px 25px
+.butt, .butt-accent
+  border: 3px solid $color-butt-bd
+  padding: 15px 35px
   background-color: transparent
   border-radius: 0
   text-transform: uppercase
   text-align: center
-  font-family: "JosefinSans-Bold", sans-serif
+  font-family: "Roboto", sans-serif
+  font-size: 20px
+  color: $text
+  transition: all .2s ease
   &:focus
     box-shadow: none
-    border-color: gray
+  &:hover
+    transition: all .2s ease
+
+.butt-accent
+  border-color: $accent-color
+  background-color: $accent-color
+  color: #fff
+  transition: all .2s ease
+  &:hover
+    border-color: rgba(255,255,255, .25)
+    transition: all .2s ease
+
+.tac
+  text-align: center
+.df
+  display: flex
+.jcc
+  justify-content: center
+.aic
+  align-items: center
+.fdc
+  flex-direction: column
