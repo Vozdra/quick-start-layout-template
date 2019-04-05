@@ -35,7 +35,7 @@ function css() {
 function js() {
   return src([
     'src/libs/jquery/dist/jquery.min.js',
-    'src/libs/bootstrap/dist/js/bootstrap.min.js',
+ /* 'src/libs/bootstrap/dist/js/bootstrap.min.js', */
     'src/js/common.js'
   ])
     .pipe(concat('script.min.js'))
