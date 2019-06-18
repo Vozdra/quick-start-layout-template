@@ -14,7 +14,7 @@ function html() {
     .pipe(browserSync.reload({ stream: true }))
 }
 
-function fonts() {
+function moveFonts() {
   return src('src/fonts/**/*')
     .pipe(dest('dist/fonts'))
 }
@@ -62,7 +62,7 @@ function imgMin() {
 }
 
 function watching() {
-	watch('src/sass/*.sass', css);
+	watch('src/sass/**/*.sass', css);
 	watch(['src/js/common.js'], js);
 	watch('src/*.html', html);
 }
@@ -89,6 +89,9 @@ function moveHtml() {
 exports.js = js;
 exports.css = css;
 exports.html = html;
+exports.moveCss = moveCss;
+exports.moveJs = moveJs;
+exports.moveHtml = moveHtml;
 exports.remove = remove;
-exports.build = series(remove, moveHtml, css, js, fonts, imgMin, moveCss, moveJs);
+exports.build = series(remove, moveHtml, css, js, moveFonts, moveCss, moveJs, imgMin);
 exports.default = parallel(bsServer, css, js, watching);
