@@ -23,10 +23,7 @@ function css() {
   return src('src/sass/main.sass')
     .pipe(sass())
     .pipe(rename({basename: "style", suffix: '.min'}))
-    .pipe(autoprefixer({
-      browsers: ['last 15 versions'],
-      cascade: false
-    }))
+    .pipe(autoprefixer({cascade: false}))
     .pipe(minifyCSS())
     .pipe(dest('src/css'))
     .pipe(browserSync.stream())
