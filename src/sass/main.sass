@@ -1,16 +1,25 @@
-@import "libs"
-@import "vars"
-@import "fonts"
-@import "default"
+@import "mixins/_list-reset"
 
-@import "header"
+::placeholder
+  color: #000
 
-/* main content start */
-@import "sections/s-about-us"
-@import "sections/s-services"
-/* main content end */
+::selection
+  background-color: darken($a-color, 20%)
+  color: #fff
 
-@import "footer"
+html
+  box-sizing: border-box
 
-/* always at the end */
-@import "media"
+*, *::before, *::after
+  box-sizing: inherit
+
+body
+  min-width: 320px
+  font-size: 16px
+  line-height: 1.5
+  overflow-x: hidden
+
+img
+  display: block
+  max-width: 100%
+  height: auto
